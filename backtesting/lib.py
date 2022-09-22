@@ -480,10 +480,10 @@ class TrailingStrategy(Strategy):
         for trade in self.trades:
             if trade.is_long:
                 trade.sl = max(trade.sl or -np.inf,
-                               self.data.Close[index] - self.__atr[index] * self.__n_atr)
+                               self.data.High[index] - self.__atr[index] * self.__n_atr)
             else:
                 trade.sl = min(trade.sl or np.inf,
-                               self.data.Close[index] + self.__atr[index] * self.__n_atr)
+                               self.data.Low[index] + self.__atr[index] * self.__n_atr)
 
 
 # Prevent pdoc3 documenting __init__ signature of Strategy subclasses
